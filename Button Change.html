@@ -1,0 +1,14 @@
+{% include 'saw_product_variables' %}
+{% if WCProductPrice > 0 %}
+
+    {% if product.available %}
+		<span id="addToCartText-{{ section.id }}" onclick='$("#tow").show()'>{{ 'products.product.add_to_cart' | t }}</span>
+                {% else %}
+        <a href="mailto:info@nssfasteners.co.za?subject=Product request for {{product.title}}: {{product.id}}&body=Good day, I would like to know when the following product is back in stock.">Notify when in stock</a>
+    {% endif %}
+
+{% else %}
+
+<a href="mailto:info@nssfasteners.co.za?subject=Price request for {{product.title}}: {{product.id}}&body=Good day, I would like the price for the following product.">Email for quote</a>
+
+{% endif %}

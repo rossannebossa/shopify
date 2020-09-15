@@ -1,0 +1,83 @@
+{% if item.product.tags contains "perpack_1" %}    
+<a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',-1)">-</a>
+<input name="updates[]" id="product-quantity-{{item.id}}" type="text"  value="{{ item.quantity }}" min="0" step="1" data-line="{{ forloop.index }}"/>
+     <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',+1)">+</a>
+        {% endif %}
+        {% if  item.product.tags contains "perpack_5" %}    
+      <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',-5)">-</a>
+<input name="updates[]" id="product-quantity-{{item.id}}" type="text"  value="{{ item.quantity }}" min="0" step="5" data-line="{{ forloop.index }}" onblur="myFunction('product-quantity-{{item.id}}',5)"/>
+     <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',+5)">+</a>
+        {% endif %}
+        {% if item.product.tags contains 'perpack_10'%}    
+      <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',-10)">-</a>
+<input name="updates[]" id="product-quantity-{{item.id}}" type="text"  value="{{ item.quantity }}" min="0" step="10" data-line="{{ forloop.index }}" onblur="myFunction('product-quantity-{{item.id}}',10)"/>
+     <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',+10)">+</a>
+        {% endif %}
+        {% if item.product.tags contains'perpack_15'%}    
+      <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',-15)">-</a>
+<input name="updates[]" id="product-quantity-{{item.id}}" type="text"  value="{{ item.quantity }}" min="0" step="15" data-line="{{ forloop.index }}" onblur="myFunction('product-quantity-{{item.id}}',15)"/>
+     <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',+15)">+</a>
+        {% endif %}
+{% if item.product.tags contains 'perpack_20'%}    
+       <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',-20)">-</a>
+<input name="updates[]" id="product-quantity-{{item.id}}" type="text"  value="{{ item.quantity }}" min="0" step="20" data-line="{{ forloop.index }}" onblur="myFunction('product-quantity-{{item.id}}',20)"/>
+     <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',+20)">+</a>
+        {% endif %}
+        {% if item.product.tags contains 'perpack_25'%}    
+       <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',-25)">-</a>
+<input name="updates[]" id="product-quantity-{{item.id}}" type="text"  value="{{ item.quantity }}" min="0" step="25" data-line="{{ forloop.index }}" onblur="myFunction('product-quantity-{{item.id}}',25)"/>
+     <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',+25)">+</a>
+        {% endif %}
+			{% if item.product.tags contains 'perpack_50'%}    
+      <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',-50)">-</a>
+<input name="updates[]" id="product-quantity-{{item.id}}" type="text"  value="{{ item.quantity }}" min="0" step="50" data-line="{{ forloop.index }}" onblur="myFunction('product-quantity-{{item.id}}',50)"/>
+     <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',+50)">+</a>
+        {% endif %}
+        {% if item.product.tags contains "perpack_100" %}     
+      <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',-100)">-</a>
+<input name="updates[]" id="product-quantity-{{item.id}}" type="text"  value="{{ item.quantity }}" min="0" step="100" data-line="{{ forloop.index }}" onblur="myFunction('product-quantity-{{item.id}}',100)"/>
+     <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',+100)">+</a>
+        {% endif %}
+{% if item.product.tags contains 'perpack_150'%}     
+     <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',-150)">-</a>
+<input name="updates[]" id="product-quantity-{{item.id}}" type="text"  value="{{ item.quantity }}" min="0" step="150" data-line="{{ forloop.index }}" onblur="myFunction('product-quantity-{{item.id}}',150)"/>
+     <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',+150)">+</a>
+        {% endif %}
+{% if item.product.tags contains 'perpack_200'%}     
+      <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',-200)">-</a>
+<input name="updates[]" id="product-quantity-{{item.id}}" type="text"  value="{{ item.quantity }}" min="0" step="200" data-line="{{ forloop.index }}" onblur="myFunction('product-quantity-{{item.id}}',200)"/>
+     <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',+200)">+</a>
+        {% endif %}
+{% if item.product.tags contains 'perpack_250'%}    
+      <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',-250)">-</a>
+<input name="updates[]" id="product-quantity-{{item.id}}" type="text"  value="{{ item.quantity }}" min="0" step="250" data-line="{{ forloop.index }}" onblur="myFunction('product-quantity-{{item.id}}',250)"/>
+     <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',+250)">+</a>
+        {% endif %}
+{% if item.product.tags contains 'perpack_500'%}    
+      <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',-500)">-</a>
+<input name="updates[]" id="product-quantity-{{item.id}}" type="text"  value="{{ item.quantity }}" min="0" step="500" data-line="{{ forloop.index }}" onblur="myFunction('product-quantity-{{item.id}}',500)"/>
+     <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',+500)">+</a>
+        {% endif %}
+{% if item.product.tags contains 'perpack_1000'%}    
+      <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',-1000)">-</a>
+<input name="updates[]" id="product-quantity-{{item.id}}" type="text"  value="{{ item.quantity }}" min="0" step="1000" data-line="{{ forloop.index }}" onblur="myFunction('product-quantity-{{item.id}}',1000)"/>
+     <a class="plus-minus" onclick="TextBox_AddToIntValue('product-quantity-{{item.id}}',+1000)">+</a>
+        {% endif %}
+
+<script>
+function TextBox_AddToIntValue(targetId,addToValue)
+{
+    var input = document.getElementById(targetId);
+    var textInt = parseInt(input.value);
+    if(isNaN(textInt))
+    {
+        textInt = 0;
+    }
+    input.value = textInt + addToValue;
+}
+  
+   function myFunction(targetId,addToValue) {
+  var x = document.getElementById(targetId);
+  x.value = Math.round(x.value/addToValue)*addToValue;
+}
+</script>
