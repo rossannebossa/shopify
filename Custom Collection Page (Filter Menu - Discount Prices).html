@@ -1,0 +1,153 @@
+{% include 'saw_product_variables' %}
+{% unless image_size %}
+  {%- assign image_size = '600x600' -%}
+{% endunless %}
+
+{% unless current_collection %}
+  {% assign current_collection = collection %}
+{% endunless %}
+
+{% assign on_sale = false %}
+{% if WCProductComparePrice > WCProductPrice %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available  %}
+  {% assign sold_out = false %}
+{% endif %}
+
+{% case section.settings.add_to_cart_button_size %}
+  {% when 'small' %}
+    {% assign btn_class = 'btn' %}
+  {% when 'medium' %}
+    {% assign btn_class = 'btn btn--wide' %}
+  {% when 'large' %}
+    {% assign btn_class = 'btn btn--full btn--large' %}
+{% endcase %}
+
+ {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+
+<div class="grid-item {% if sold_out %} sold-out{% endif %}{% if on_sale %} on-sale{% endif %}">
+  
+  <div class="grid-item large--one-tenth medium--two-fourths">
+  <img id="mobile-only" class="collection-product-image" src="{{ featured_image | img_url: 'small' }}"/>
+      </div>
+
+<div class="grid-item large--one-sixth medium--one-fifths">
+        <p class="h6">{{ product.title }}</p>
+        <div class="rte">
+          <p>{{ product.content }}</p>
+        </div>
+      </div>
+
+  <div class="grid-item large--one-fifth medium--two-fourths">
+    <div class="product-item">
+      <p class="h1 medium-down--left">
+
+        {% include 'saw_compute_discount' with product %}
+        <!-- 
+{{discount_key}} 
+Discount: {{ product.metafields.sawholesale[discount_key] }} 
+Current Price: {{wbuyx_price_min}}
+saw_product_price: {{saw_product_price}} 
+saw_product_compare_at_price {{saw_product_compare_at_price}} 
+-->
+        {% if saw_has_discount == false or saw_product_price >= saw_product_compare_at_price %}
+        {% if on_sale %}
+        <span class="visually-hidden">{{ "products.general.sale_price" | t }}</span>
+        {% else %}
+        <span class="visually-hidden">{{ "products.general.regular_price" | t }}</span>
+        {% endif %}  {% else %}
+        {% if product.available %}
+        {{ saw_product_price | money }}
+        <del>{{ saw_product_compare_at_price | money }}</del>
+        {% endif %}
+        {% endif %}
+
+            {% include 'mav-vat'%} 
+            
+            
+            {% if on_sale and section.settings.product_show_compare_at_price %}
+              <small>
+                <s>
+                  <span class="visually-hidden">{{ "products.general.regular_price" | t }}</span>
+                  {% include 'price' with WCProductComparePrice %}
+                </s>
+              </small>
+            {% endif %}
+          </p>
+
+          {% if on_sale and section.settings.product_show_saved_amount %}
+          {% if product.available %}
+            <span class="sale-tag medium-down--right{% if section.settings.product_reviews_enable %} has-reviews{% endif %}">
+              {% assign compare_price = WCProductComparePrice %}
+              {% assign product_price = WCProductPrice %}
+              {% include 'price-sale' %}
+            </span>
+       {% else %}
+       <span class="sale-tag medium-down--right{% if section.settings.product_reviews_enable %} has-reviews{% endif %}" style="color:grey; border:solid 2px grey;">
+              {% assign compare_price = WCProductComparePrice %}
+              {% assign product_price = WCProductPrice %}
+              {% include 'price-sale' %}
+            </span>
+       	{% endif %}
+          {% endif %}
+
+          {% if section.settings.product_reviews_enable %}
+            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+          {% endif %}
+        </div>
+      </div>
+  
+  {% capture "form_class" -%}
+        addToCartForm
+      {%- endcapture %}
+  
+  <form action="/cart/add" class="addToCartForm addToCartForm--payment-button" id="form_id">
+<input name="id" value="{{ product.variants.first.id }}" type="hidden"/>
+      <div class="grid-item large--one-sixth medium--two-fourth">
+        
+        {% if product.handle contains "bag" %}
+        <label class="h6">Bags: </label>
+        {% elsif product.handle contains "sets" %}
+         <label class="h6">Bags: </label>
+        {% else %}
+        <label class="h6">Pieces: </label>
+        {% endif %}
+        
+         {% include 'product-increment' %}
+        
+      </div>
+
+
+
+
+ <div class="grid-item large--one-fifth medium--two-fourth">
+  
+      <div class="payment-buttons payment-buttons--{{ section.settings.add_to_cart_button_size }}">
+          <button  type="submit" name="add" id="addToCart-{{ section.id }}" class="btn btn--add-to-cart mav-button-style"{% unless product.available %} disabled="disabled"{% endunless %} >
+            <span class="icon icon-cart"></span>
+              
+            {% include 'button-change' %}
+          </button>
+        <br>
+        
+       <div class="share">
+        {% include 'whatshare_link' %}
+        </div>
+<br>
+  </div>
+   
+   </div>
+  
+  
+  </form>
+ 
+       
+
+
+
+</div>
+
+

@@ -1,0 +1,75 @@
+{% include 'saw_product_variables' %}
+{% if WCProductPrice > 0 %}
+
+    {% if product.available %}
+		<span class="mav-vat-ex">
+          
+            {% include 'saw_compute_discount' with product %}
+<!-- 
+{{discount_key}} 
+Discount: {{ product.metafields.sawholesale[discount_key] }} 
+Current Price: {{wbuyx_price_min}}
+saw_product_price: {{saw_product_price}} 
+saw_product_compare_at_price {{saw_product_compare_at_price}} 
+-->
+          
+  {% if saw_has_discount == false or saw_product_price >= saw_product_compare_at_price %}
+  {{ WCProductPrice |  money }}
+  {% else %}
+    
+  {% endif %}     
+  <sub> Per Piece (exc VAT) </sub>
+</span>
+
+	<br>
+
+<span class="money">
+  <span class="mav-vat">
+    {{ WCProductPrice | times:1.15 | money }}<sub>Per Piece (inc VAT)</sub>
+  </span>
+  </span>
+
+    {% else %}
+  <span class="soldouts">
+        Sold Out
+    </span>
+  <br>
+  <span class="soldouts">
+  {{ WCProductPrice |  money }}
+  <sub> Per Piece (exc VAT) </sub>
+</span>
+	<br>
+<span class="soldouts">
+  <span class="soldouts">
+    {{ WCProductPrice | times:1.15 | money }}<sub>Per Piece (inc VAT)</sub>
+  </span>
+   </span>
+    {% endif %}
+
+{% else %}
+  <p></p>
+<span class="soldouts">
+ Not Available
+  </span>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
